@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+  <!-- add our i18n resource -->
+  <resource type="i18n" name="i18n" location="AuswertungJira"/>
+  <!-- add our web resources -->
+  <web-resource key="AuswertungJira-resources" name="AuswertungJira Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <resource type="download" name="AuswertungJira.css" location="/css/AuswertungJira.css"/>
+    <resource type="download" name="AuswertungJira.js" location="/js/AuswertungJira.js"/>
+    <resource type="download" name="images/" location="/images"/>
+    <context>AuswertungJira</context>
+  </web-resource>
+  <servlet name="Auswertung Jira" i18n-name-key="auswertung-jira.name" key="auswertung-jira" class="com.auswertung.plugins.auswertungjira.servlet.AuswertungJira">
+    <description key="auswertung-jira.description">The Auswertung Jira Plugin</description>
+    <url-pattern>/auswertungjira</url-pattern>
+  </servlet>
+  <web-item name="AuswertungJiraLink" i18n-name-key="auswertung-jira-link.name" key="auswertung-jira-link" section="system.header/left" weight="1000">
+    <description key="auswertung-jira-link.description">The AuswertungJiraLink Plugin</description>
+    <label key="auswertung-jira-link.label"></label>
+    <link linkId="auswertung-jira-link-link">/plugins/servlet/auswertungjira</link>
+  </web-item>
+</atlassian-plugin>
